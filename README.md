@@ -133,26 +133,3 @@ br.com.seuprojeto
 ```
 
 ---
-
-# 📈 Possíveis Evoluções
-
-* Paginação de resultados
-* Ordenação dinâmica
-* Uso de DTOs
-* Tratamento global de exceções
-* Migração para Spring Boot
-* Transformação em API REST
-
----
-
-## 🧩 Resultado Esperado
-
-Ao concluir o projeto, espera-se domínio sobre:
-
-* Relacionamentos em JPA
-* Escrita de consultas JPQL
-* Controle de transações
-* Estruturação em camadas
-* Separação entre regra de negócio e acesso a dados
-
-Este projeto serve como base para evoluir posteriormente para uma aplicação web ou API REST.
