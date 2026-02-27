@@ -31,8 +31,8 @@ build/
 
 ### Secrets ###
 .env
-application-local.properties
-application-local.yml
+application.properties
+application.yml
 
 ### VS Code ###
 .vscode/
