@@ -129,9 +129,7 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 br.com.seuprojeto
  ├── model
  ├── repository
- ├── service
- ├── util
- └── main
+ └── service
 ```
 
 ---
