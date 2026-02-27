@@ -47,7 +47,6 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 * Emprestar livro
 * Devolver livro
 * Listar livros emprestados
-* Listar empréstimos por usuário
 
 ---
 
