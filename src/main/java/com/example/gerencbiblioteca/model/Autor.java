@@ -1,12 +1,10 @@
 package com.example.gerencbiblioteca.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+@Entity
 public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,8 +13,8 @@ public class Autor {
     private String nome;
     private String nacionalidade;
 
-    @OneToMany(mappedBy = "autor")
-    List<Livro> livros;
+    @ManyToMany(mappedBy = "autores")
+    private List<Livro> livros;
 
     public long getId() {
         return id;

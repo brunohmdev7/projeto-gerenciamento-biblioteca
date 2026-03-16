@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+@Entity
 public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,11 +14,11 @@ public class Livro {
     private Integer anoPublicado;
     private boolean disponivel;
 
-    @OneToMany(mappedBy = "livro")
+    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
     private List<Emprestimo> emprestimos;
 
-    @ManyToOne
-    private Autor autor;
+    @ManyToMany
+    private List<Autor> autores;
 
     public long getId() {
         return id;
@@ -51,12 +52,12 @@ public class Livro {
         this.disponivel = disponivel;
     }
 
-    public Autor getAutor() {
-        return autor;
+    public List<Autor> getAutores() {
+        return autores;
     }
 
-    public void setAutor(Autor autor) {
-        this.autor = autor;
+    public void setAutores(List<Autor> autores) {
+        this.autores = autores;
     }
 
     public List<Emprestimo> getEmprestimos() {

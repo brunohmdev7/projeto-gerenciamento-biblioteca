@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
 public class Emprestimo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
