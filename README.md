@@ -11,7 +11,7 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 * Java (Spring Boot)
 * JPA
 * Hibernate
-* PostgreSQL
+* PostgreSQL com Docker
 
 ---
 
@@ -59,7 +59,7 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 * nacionalidade (String)
 * livros (List<Livro>)
 
-> Um autor pode possuir vários livros.
+> Muitos autores podem possuir vários livros.
 
 ---
 
@@ -69,7 +69,7 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 * titulo (String)
 * anoPublicacao (Integer)
 * disponivel (Boolean)
-* autor (Autor)
+* autores (List<Autor>)
 
 > Muitos livros pertencem a um único autor.
 
