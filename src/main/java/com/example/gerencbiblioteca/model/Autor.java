@@ -16,6 +16,11 @@ public class Autor {
     @ManyToMany(mappedBy = "autores")
     private List<Livro> livros;
 
+    public Autor(String nome, String nacionalidade) {
+        this.nome = nome;
+        this.nacionalidade = nacionalidade;
+    }
+
     public long getId() {
         return id;
     }
