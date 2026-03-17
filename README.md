@@ -71,7 +71,7 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 * disponivel (Boolean)
 * autores (List<Autor>)
 
-> Muitos livros pertencem a um único autor.
+> Muitos livros pertencem a um ou vários autores.
 
 ---
 
