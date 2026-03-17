@@ -14,10 +14,23 @@ public class Livro {
     private Integer anoPublicado;
     private boolean disponivel;
 
+    public Livro() {}
+
+    public Livro(String titulo, Integer anoPublicado) {
+        this.titulo = titulo;
+        this.anoPublicado = anoPublicado;
+        this.disponivel = true;
+    }
+
     @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
     private List<Emprestimo> emprestimos;
 
     @ManyToMany
+    @JoinTable(
+            name = "livro_autor",
+            joinColumns = @JoinColumn(name = "livro_id"),
+            inverseJoinColumns = @JoinColumn(name = "autor_id")
+    )
     private List<Autor> autores;
 
     public long getId() {

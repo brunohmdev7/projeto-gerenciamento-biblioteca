@@ -5,6 +5,8 @@ import com.example.gerencbiblioteca.repository.AutorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AutorService {
@@ -13,4 +15,8 @@ public class AutorService {
     public void adicionaAutorNoBanco(Autor autor) {
         autorRepository.save(autor);
     }
+
+    public List<Autor> listarAutoresDoBanco() { return autorRepository.findAllByOrderByNomeAsc(); }
+
+    public Autor buscarPorNome(String nomeAutor) { return autorRepository.findFirstByNomeContaining(nomeAutor); }
 }
