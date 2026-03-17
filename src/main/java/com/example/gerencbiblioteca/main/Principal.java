@@ -1,13 +1,14 @@
 package com.example.gerencbiblioteca.main;
 
 import com.example.gerencbiblioteca.model.Autor;
-import com.example.gerencbiblioteca.repository.EmprestimoRepository;
+import com.example.gerencbiblioteca.model.Livro;
 import com.example.gerencbiblioteca.service.AutorService;
 import com.example.gerencbiblioteca.service.EmprestimoService;
 import com.example.gerencbiblioteca.service.LivroService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -24,22 +25,44 @@ public class Principal {
 
         while (opcao != 0) {
             System.out.println("""
-                1 - Cadastrar autor
-                2 - Listar autores
-                3 - Cadastrar livro
-                4 - Listar livros
-                5 - Buscar livros por autor
-                6 - Emprestar livro
-                7 - Devolver livro
-                8 - Listar empréstimos
-                0 - Sair
-                """);
+               1 - Cadastrar autor
+               2 - Listar autores
+               3 - Cadastrar livro
+               4 - Listar livros
+               5 - Buscar livros por autor
+               6 - Emprestar livro
+               7 - Devolver livro
+               8 - Listar empréstimos
+               0 - Sair
+            """);
+
+            System.out.println("Digite a opção que você deseja:");
+            opcao = teclado.nextInt();
+            teclado.nextLine();
 
             switch (opcao) {
                 case 1:
                     cadastrarAutor();
+                    break;
+                case 2:
+                    listarAutores();
+                    break;
+                case 3:
+                    cadastrarLivro();
+                    break;
+                case 4:
+                    buscarLivros();
+                    break;
+                case 5:
+                    buscarLivrosPorAutor();
+                    break;
             }
         }
+    }
+
+    private void listarAutores() {
+        System.out.println("Aqui vão todos os autores cadastrados: ");
+        autorService.listarAutoresDoBanco();
     }
 
     private void cadastrarAutor() {
@@ -50,5 +73,41 @@ public class Principal {
 
         Autor autor = new Autor(nome, nacionalidade);
         autorService.adicionaAutorNoBanco(autor);
+        System.out.println("Autor adicionado com sucesso!");
+    }
+
+    private void cadastrarLivro() {
+            System.out.println("Digite o nome do livro: ");
+            String titulo = teclado.nextLine();
+            System.out.println("Ano de publicação: ");
+            Integer ano = teclado.nextInt();
+            teclado.nextLine();
+
+            System.out.println("Digite o nome do autor: ");
+            String nomeAutor = teclado.nextLine();
+
+            Autor autor = autorService.buscarPorNome(nomeAutor);
+
+            if (autor == null) {
+                System.out.println("Autor não encontrado. Cadastre-o primeiro.");
+                return;
+            }
+
+            Livro livro = new Livro(titulo, ano);
+            livro.setAutores(List.of(autor));
+            livroService.adicionaLivroNoBanco(livro);
+
+            System.out.println("Livro cadastrado com sucesso!");
+    }
+
+    private void buscarLivros() {
+        System.out.println("Aqui estão os livros cadastrados: ");
+        livroService.listarLivrosNoBanco();
+    }
+
+    private void buscarLivrosPorAutor() {
+        System.out.println("Digite o nome do autor que deseja consultar os livros cadastrados: ");
+        String nomeAutor = teclado.nextLine();
+        // continuar desenvolvendo
     }
 }

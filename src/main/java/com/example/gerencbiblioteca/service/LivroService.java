@@ -5,6 +5,8 @@ import com.example.gerencbiblioteca.repository.LivroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LivroService {
@@ -13,4 +15,6 @@ public class LivroService {
     public void adicionaLivroNoBanco(Livro livro) {
         livroRepository.save(livro);
     }
+
+    public List<Livro> listarLivrosNoBanco() { return livroRepository.findAllByOrderByTituloAsc(); }
 }

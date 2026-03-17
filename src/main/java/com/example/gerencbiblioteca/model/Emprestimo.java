@@ -15,7 +15,6 @@ public class Emprestimo {
     private LocalDate dataDevolucao;
 
     @ManyToOne
-    @JoinColumn(name = "livro_id")
     private Livro livro;
 
     public long getId() {
