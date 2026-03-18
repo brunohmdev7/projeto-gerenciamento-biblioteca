@@ -88,4 +88,9 @@ public class Livro {
     public void buscarLivroPorAno() {}
 
     public void listarLivrosDisponiveis() {}
+
+    @Override
+    public String toString() {
+        return "Titulo: " + this.getTitulo() + " | Ano publicado: " + this.getAnoPublicado();
+    }
 }

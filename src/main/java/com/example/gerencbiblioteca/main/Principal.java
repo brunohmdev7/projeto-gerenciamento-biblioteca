@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 @Component
@@ -30,10 +31,9 @@ public class Principal {
                3 - Cadastrar livro
                4 - Listar livros
                5 - Buscar livros por autor
-               6 - Emprestar livro
-               7 - Devolver livro
-               8 - Listar empréstimos
-               0 - Sair
+               6 - Emprestar livro [ <-- EM DESENVOLVIMENTO ] 
+               7 - Devolver livro [ <-- EM DESENVOLVIMENTO ]
+               8 - Listar empréstimos [ <-- EM DESENVOLVIMENTO ]
             """);
 
             System.out.println("Digite a opção que você deseja:");
@@ -61,8 +61,9 @@ public class Principal {
     }
 
     private void listarAutores() {
+        List<Autor> autores = autorService.listarAutoresDoBanco();
         System.out.println("Aqui vão todos os autores cadastrados: ");
-        autorService.listarAutoresDoBanco();
+        autores.forEach(System.out::println);
     }
 
     private void cadastrarAutor() {
@@ -101,13 +102,20 @@ public class Principal {
     }
 
     private void buscarLivros() {
+        List<Livro> livros = livroService.listarLivrosNoBanco();
         System.out.println("Aqui estão os livros cadastrados: ");
-        livroService.listarLivrosNoBanco();
+        livros.forEach(System.out::println);
     }
 
     private void buscarLivrosPorAutor() {
         System.out.println("Digite o nome do autor que deseja consultar os livros cadastrados: ");
         String nomeAutor = teclado.nextLine();
-        // continuar desenvolvendo
+        List<Livro> livrosBuscados = livroService.buscarLivrosPorAutor(nomeAutor);
+
+        if (livrosBuscados.isEmpty()) {
+            System.out.println("Nenhum livro de " + nomeAutor + " encontrado");
+        } else {
+            livrosBuscados.forEach(System.out::println);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.gerencbiblioteca.service;
 
+import com.example.gerencbiblioteca.model.Autor;
 import com.example.gerencbiblioteca.model.Livro;
 import com.example.gerencbiblioteca.repository.LivroRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,4 +18,6 @@ public class LivroService {
     }
 
     public List<Livro> listarLivrosNoBanco() { return livroRepository.findAllByOrderByTituloAsc(); }
+
+    public List<Livro> buscarLivrosPorAutor(String nomeAutor) { return livroRepository.findByNomeAutor(nomeAutor); }
 }
