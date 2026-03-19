@@ -1,5 +1,6 @@
 package com.example.gerencbiblioteca.main;
 
+import com.example.gerencbiblioteca.dto.LivroDTO;
 import com.example.gerencbiblioteca.model.Autor;
 import com.example.gerencbiblioteca.model.Livro;
 import com.example.gerencbiblioteca.service.AutorService;
@@ -32,8 +33,8 @@ public class Principal {
                4 - Listar livros
                5 - Buscar livros por autor
                6 - Emprestar livro [ <-- EM DESENVOLVIMENTO ] 
-               7 - Devolver livro [ <-- EM DESENVOLVIMENTO ]
-               8 - Listar empréstimos [ <-- EM DESENVOLVIMENTO ]
+               7 - Devolver livro
+               8 - Listar empréstimos
             """);
 
             System.out.println("Digite a opção que você deseja:");
@@ -56,6 +57,8 @@ public class Principal {
                 case 5:
                     buscarLivrosPorAutor();
                     break;
+                case 6:
+                    emprestarLivro();
             }
         }
     }
@@ -102,8 +105,7 @@ public class Principal {
     }
 
     private void buscarLivros() {
-        List<Livro> livros = livroService.listarLivrosNoBanco();
-        System.out.println("Aqui estão os livros cadastrados: ");
+        List<LivroDTO> livros = livroService.listarLivrosFormatados();
         livros.forEach(System.out::println);
     }
 
@@ -117,5 +119,14 @@ public class Principal {
         } else {
             livrosBuscados.forEach(System.out::println);
         }
+    }
+
+    private void emprestarLivro() {
+        System.out.println("Digite o livro que deseja emprestar: ");
+        String filtroLivro = teclado.nextLine();
+        List<LivroDTO> livrosFiltrados = livroService.listarLivrosFormatadosFiltrados(filtroLivro);
+        livrosFiltrados.forEach(System.out::println);
+
+        // desenvolver a seleção do livro e add verificações de disponibilidade
     }
 }

@@ -61,6 +61,14 @@ public class Livro {
         return disponivel;
     }
 
+    public String getSimeNaoDisponivel() {
+        if (this.disponivel == true) {
+            return "Sim";
+        } else {
+            return "Não";
+        }
+    }
+
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
@@ -91,6 +99,6 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Titulo: " + this.getTitulo() + " | Ano publicado: " + this.getAnoPublicado();
+        return "Titulo: " + this.getTitulo() + " | Ano de publicação: " + this.getAnoPublicado() + " | Disponível? " + this.getSimeNaoDisponivel();
     }
 }
