@@ -2,6 +2,7 @@ package com.example.gerencbiblioteca.main;
 
 import com.example.gerencbiblioteca.dto.LivroDTO;
 import com.example.gerencbiblioteca.model.Autor;
+import com.example.gerencbiblioteca.model.Emprestimo;
 import com.example.gerencbiblioteca.model.Livro;
 import com.example.gerencbiblioteca.service.AutorService;
 import com.example.gerencbiblioteca.service.EmprestimoService;
@@ -9,6 +10,7 @@ import com.example.gerencbiblioteca.service.LivroService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -59,6 +61,7 @@ public class Principal {
                     break;
                 case 6:
                     emprestarLivro();
+                    break;
             }
         }
     }
@@ -127,6 +130,29 @@ public class Principal {
         List<LivroDTO> livrosFiltrados = livroService.listarLivrosFormatadosFiltrados(filtroLivro);
         livrosFiltrados.forEach(System.out::println);
 
-        // desenvolver a seleção do livro e add verificações de disponibilidade
+        System.out.println("Agora escolha qual exatamente você deseja: ");
+        String nomeLivroExato = teclado.nextLine();
+        Optional<Livro> livroExato = livroService.buscarLivroPeloNomeExato(nomeLivroExato);
+
+        if (livroExato.isPresent() && livroExato.get().isDisponivel()) {
+            LivroDTO livroExatoDTO = new LivroDTO(livroExato.get().getTitulo(),
+                    livroExato.get().getAutores().toString(), livroExato.get().getAnoPublicado(), livroExato.get().getSimeNaoDisponivel());
+            System.out.println(livroExatoDTO);
+
+            System.out.println("Quantos dias você pretende ficar com o livro? (máx. 30 dias)");
+            int diasEmprestimo = teclado.nextInt();
+            teclado.nextLine();
+
+            if (diasEmprestimo > 1 && diasEmprestimo < 30) {
+                LocalDate dataEmprestimo = LocalDate.now();
+                LocalDate dataDevolucao = dataEmprestimo.plusDays(diasEmprestimo);
+
+                Emprestimo emprestimo = new Emprestimo(dataEmprestimo, dataDevolucao, livroExato.get());
+                System.out.println("Empréstimo realizado com sucesso!");
+                emprestimoService.adicionarEmprestimoNoBanco(emprestimo);
+            } else {
+                System.out.println("Prazo inválido! Informe um valor entre 1 e 30 dias.");
+            }
+        }
     }
 }
