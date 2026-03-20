@@ -16,6 +16,12 @@ public class Autor {
     @ManyToMany(mappedBy = "autores")
     private List<Livro> livros;
 
+    public Autor() {}
+
+    public Autor(String nome) {
+        this.nome = nome;
+    }
+
     public Autor(String nome, String nacionalidade) {
         this.nome = nome;
         this.nacionalidade = nacionalidade;
@@ -58,4 +64,9 @@ public class Autor {
     public void listarAutores() {}
 
     public void buscarAutorPorNome() {}
+
+    @Override
+    public String toString() {
+        return "Autor - " + this.getNome() + " | Nacionalidade - " + this.getNacionalidade();
+    }
 }

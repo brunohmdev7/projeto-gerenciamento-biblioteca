@@ -2,6 +2,7 @@ package com.example.gerencbiblioteca.service;
 
 import com.example.gerencbiblioteca.model.Autor;
 import com.example.gerencbiblioteca.repository.AutorRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
