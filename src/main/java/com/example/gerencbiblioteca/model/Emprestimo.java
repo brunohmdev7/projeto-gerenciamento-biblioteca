@@ -1,6 +1,7 @@
 package com.example.gerencbiblioteca.model;
 
 import jakarta.persistence.*;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -10,9 +11,17 @@ public class Emprestimo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String nomeUsuario;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
+
+    public Emprestimo() {}
+
+    public Emprestimo(LocalDate dataEmprestimo, LocalDate dataDevolucao, Livro livro) {
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
+        this.livro = livro;
+        livro.setDisponivel(false);
+    }
 
     @ManyToOne
     private Livro livro;
@@ -23,14 +32,6 @@ public class Emprestimo {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
-
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
     }
 
     public LocalDate getDataEmprestimo() {

@@ -50,5 +50,5 @@ public class LivroService {
 
     public List<Livro> filtrarLivroPorPalavra(String palavra) { return livroRepository.filterByPalavra(palavra); }
 
-    public Optional<Livro> buscarLivroPeloNomeExato(String nomeExato) {  return livroRepository.buscarPorTituloExato(nomeExato); }
+    public Optional<Livro> buscarLivroPeloNomeExato(String nomeExato) { return livroRepository.buscarPorTituloExato(nomeExato); }
 }
