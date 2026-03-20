@@ -67,6 +67,6 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor - " + this.getNome() + " | Nacionalidade - " + this.getNacionalidade();
+        return this.getNome() + " | " + this.getNacionalidade();
     }
 }
