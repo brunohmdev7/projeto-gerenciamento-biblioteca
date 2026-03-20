@@ -62,6 +62,9 @@ public class Principal {
                 case 6:
                     emprestarLivro();
                     break;
+                case 7:
+                    devolverLivro();
+                    break;
             }
         }
     }
@@ -155,4 +158,6 @@ public class Principal {
             }
         }
     }
+
+    private void devolverLivro() {}
 }
