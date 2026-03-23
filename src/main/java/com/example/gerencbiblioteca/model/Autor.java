@@ -59,12 +59,6 @@ public class Autor {
         this.livros = livros;
     }
 
-    public void cadastrarAutor() {}
-
-    public void listarAutores() {}
-
-    public void buscarAutorPorNome() {}
-
     @Override
     public String toString() {
         return this.getNome() + " | " + this.getNacionalidade();
