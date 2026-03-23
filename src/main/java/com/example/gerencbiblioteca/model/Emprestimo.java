@@ -1,9 +1,9 @@
 package com.example.gerencbiblioteca.model;
 
 import jakarta.persistence.*;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Emprestimo {
@@ -14,7 +14,8 @@ public class Emprestimo {
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
 
-    public Emprestimo() {}
+    public Emprestimo() {
+    }
 
     public Emprestimo(LocalDate dataEmprestimo, LocalDate dataDevolucao, Livro livro) {
         this.dataEmprestimo = dataEmprestimo;
@@ -58,10 +59,11 @@ public class Emprestimo {
         this.livro = livro;
     }
 
-    public void emprestarLivro() {}
-
-    public void devolverLivro() {}
-
-    public void listarLivrosEmprestados() {}
-
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return "Livro emprestado: " + this.getLivro().getTitulo()
+                + " | Período: De " + this.getDataEmprestimo().format(formatter)
+                + " até " + this.getDataDevolucao().format(formatter);
+    }
 }

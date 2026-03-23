@@ -34,9 +34,10 @@ public class Principal {
                3 - Cadastrar livro
                4 - Listar livros
                5 - Buscar livros por autor
-               6 - Emprestar livro [ <-- EM DESENVOLVIMENTO ] 
-               7 - Devolver livro
-               8 - Listar empréstimos
+               6 - Emprestar livro 
+               7 - Listar empréstimos
+               
+               0 - Sair
             """);
 
             System.out.println("Digite a opção que você deseja:");
@@ -63,7 +64,9 @@ public class Principal {
                     emprestarLivro();
                     break;
                 case 7:
-                    devolverLivro();
+                    listarEmprestimos();
+                    break;
+                case 0:
                     break;
             }
         }
@@ -159,5 +162,12 @@ public class Principal {
         }
     }
 
-    private void devolverLivro() {}
+    private void listarEmprestimos() {
+        System.out.println("Aqui vão todos os empréstimos listados: ");
+        List<Emprestimo> emprestimosListados = emprestimoService.listarEmprestimosNoBanco();
+        emprestimosListados.forEach(e -> {
+            String dataFormatada = emprestimoService.getDataFormatada(e.getId());
+            System.out.println(e);
+        });
+    }
 }

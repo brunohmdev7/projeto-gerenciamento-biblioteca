@@ -89,14 +89,6 @@ public class Livro {
         this.emprestimos = emprestimos;
     }
 
-    public void cadastrarLivro() {}
-
-    public void listarLivros() {}
-
-    public void buscarLivroPorAno() {}
-
-    public void listarLivrosDisponiveis() {}
-
     @Override
     public String toString() {
         return "Titulo: " + this.getTitulo() + " | Ano de publicação: " + this.getAnoPublicado() + " | Disponível? " + this.getSimeNaoDisponivel();
