@@ -2,7 +2,7 @@
 
 Aplicação desenvolvida em **Java (console)** com **JPA e Hibernate** para persistência de dados. O projeto simula o funcionamento básico de uma biblioteca, permitindo o gerenciamento de autores, livros e empréstimos.
 
-Este projeto tem como objetivo consolidar conceitos fundamentais de backend, como mapeamento de entidades, relacionamentos entre tabelas, consultas com JPQL e aplicação de regras de negócio.
+Neste exato momento, o projeto está em evoulação para Web (Spring Web)
 
 ---
 
@@ -32,20 +32,16 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 
 * Cadastrar autor
 * Listar autores
-* Buscar autor por nome
 
 ## 📖 Livro
 
 * Cadastrar livro
 * Listar livros
 * Buscar livros por autor
-* Buscar livros por faixa de ano
-* Listar apenas livros disponíveis
 
 ## 🔄 Empréstimo
 
 * Emprestar livro
-* Devolver livro
 * Listar livros emprestados
 
 ---
@@ -95,9 +91,9 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 3 - Cadastrar livro
 4 - Listar livros
 5 - Buscar livros por autor
-6 - Emprestar livro
-7 - Devolver livro
-8 - Listar empréstimos
+6 - Emprestar livro 
+7 - Listar empréstimos
+               
 0 - Sair
 ```
 
@@ -107,25 +103,16 @@ Este projeto tem como objetivo consolidar conceitos fundamentais de backend, com
 
 * Não permitir empréstimo de livro indisponível
 * Ao emprestar livro → marcar como indisponível
-* Ao devolver livro → marcar como disponível
 * Não permitir cadastrar livro sem autor existente
-
----
-
-# 🔍 Consultas JPQL Sugeridas
-
-* Buscar livros por nome do autor
-* Buscar livros entre dois anos
-* Contar quantidade de livros por autor
-* Buscar autores com mais de X livros
-* Listar livros mais emprestados
 
 ---
 
 # 🗂️ Estrutura de Pacotes
 
 ```
-br.com.seuprojeto
+br.com.projgerbiblioteca
+ ├── dto
+ ├── main
  ├── model
  ├── repository
  └── service
